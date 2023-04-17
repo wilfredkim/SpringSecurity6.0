@@ -29,8 +29,10 @@ public class RoleServiceImpl implements RoleService {
         if (role == null) {
             role = new Role(roleRequest.getName(), roleRequest.getDescription());
             List<Privilege> privilegeList = new ArrayList<>();
-            for (PrivilegeRequest privilegeRequest : roleRequest.getPrivilegeRequests()) {
-                privilegeList.add(privilegeService.save(privilegeRequest));
+            if (roleRequest.getPrivilegeRequests()!=null) {
+                for (PrivilegeRequest privilegeRequest : roleRequest.getPrivilegeRequests()) {
+                    privilegeList.add(privilegeService.save(privilegeRequest));
+                }
             }
             role.setPrivileges(privilegeList);
             if (roleRequest.getUserId() != null) {

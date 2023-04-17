@@ -1,7 +1,28 @@
+server:
+  port: 9001
 application:
   security:
     jwt:
-      secret-key: hVmYq3t6v9y$B&E)H@McQfTjWnZr4u7x!z%C*F-JaNdRgUkXp2s5v8y/B?D(G+KbPeShVmYq3t6w9z$C&F)H@McQfTjWnZr4u7x!A%D*G-KaNdRgUkXp2s5v8y/B?E(H+MbQeThVmYq3t6w9z$C&F)J@NcRfUjXnZr4u7x!A%D*G-KaPdSgVkYp3s5v8y/B?E(H+MbQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r5u8x/A%D*G-KaPdSgVkYp3s6v9y$B&E(H+MbQeThWmZq4t7w!z%C*F-J@NcRfUjXn2r5u8x/A?D(G+KbPdSgVkYp3s6v9y$B&E)H@McQfThWmZq4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZr4u7w!z%C*F-JaNdRgUkXp2s5v8y/A?D(G+KbPeShVmYq3t6w9z$C&E)H@McQfTjWnZr4u7x!A%D*G-JaNdRgUkXp2s5v8y/B?E(H+MbPe
+      secret-key: 7Elj4DLH0MMHTWTpmQGQqJHeuBHmJbYkrqmOkkRo99gD/cCNZB/X6ak+i6jVAdks
       expiration: 60000 # 86400000 # a day
       refresh-token:
         expiration: 604800000 # 7 days
+
+
+spring:
+  main:
+    allow-circular-references: true
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_security
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+
