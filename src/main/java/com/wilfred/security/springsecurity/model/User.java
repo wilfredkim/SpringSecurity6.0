@@ -11,20 +11,29 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Getter@Setter
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Table(name = "_user")
-public class User  implements UserDetails {
+public class User  extends BaseEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String firstname;
     private String lastname;
+
+    @Column(unique = true)
     private String email;
     private String password;
+
+    private boolean accountLocked;
+
+    private boolean accountExpired;
+
+    private boolean accountActivated;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
@@ -42,12 +51,12 @@ public class User  implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return accountExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return accountLocked;
     }
 
     @Override
@@ -62,7 +71,7 @@ public class User  implements UserDetails {
 
     private List<GrantedAuthority> getAuthorities(Collection<Role> roles) {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        for (Role role: roles) {
+        for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
             //role.getPrivileges().stream().map(p -> new SimpleGrantedAuthority(p.getName())).forEach(authorities::add);
         }

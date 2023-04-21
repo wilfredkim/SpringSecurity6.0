@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Token {
+public class Token extends BaseEntity {
 
     @Id
     @GeneratedValue

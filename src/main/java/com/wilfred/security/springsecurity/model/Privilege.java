@@ -13,7 +13,7 @@ import java.util.Collection;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Privilege {
+public class Privilege extends BaseEntity {
 
 
     public Privilege(String name) {

@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public interface AuthenticationService {
-    AuthenticationResponse register(UserRequest userRequest);
 
     AuthenticationResponse authenticate(AuthenticationRequest request);
 
