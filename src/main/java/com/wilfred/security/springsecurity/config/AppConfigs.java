@@ -1,5 +1,7 @@
 package com.wilfred.security.springsecurity.config;
 
+import com.wilfred.security.springsecurity.Util.EmailValidator;
+import com.wilfred.security.springsecurity.Util.PasswordMatchesValidator;
 import com.wilfred.security.springsecurity.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -38,5 +40,14 @@ public class AppConfigs {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+    @Bean
+    public EmailValidator usernameValidator() {
+        return new EmailValidator();
+    }
+
+    @Bean
+    public PasswordMatchesValidator passwordMatchesValidator() {
+        return new PasswordMatchesValidator();
     }
 }

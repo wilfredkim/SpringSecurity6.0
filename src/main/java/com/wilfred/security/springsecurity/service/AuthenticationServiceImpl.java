@@ -33,8 +33,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final TokenRepository tokenRepository;
     private final JWTService jwtService;
     private final AuthenticationManager authenticationManager;
-    private final RoleRepository roleRepository;
-
 
 
     private void saveUserGeneratedToken(User user, String jwtToken) {
@@ -44,14 +42,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-            var user = userRepository.findByEmail(request.getEmail()).orElseThrow();
-            var jwtToken = jwtService.generateToken(user);
-            var refreshToken = jwtService.generateRefreshToken(user);
-            revokeAllUserTokens(user);
-            saveUserGeneratedToken(user, jwtToken);
-            return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).build();
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        var user = userRepository.findByEmail(request.getEmail()).orElseThrow();
+        var jwtToken = jwtService.generateToken(user);
+        var refreshToken = jwtService.generateRefreshToken(user);
+        revokeAllUserTokens(user);
+        saveUserGeneratedToken(user, jwtToken);
+        return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).build();
 
     }
 
