@@ -7,10 +7,9 @@ import com.wilfred.security.springsecurity.payload.RoleRequest;
 import com.wilfred.security.springsecurity.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/roles")
@@ -21,5 +20,10 @@ public class RoleController {
     @PostMapping
     public ResponseEntity<Role> savePrivileges(@RequestBody RoleRequest roleRequest) {
         return ResponseEntity.ok(roleService.save(roleRequest));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Role>> getList() {
+        return ResponseEntity.ok(roleService.getList());
     }
 }

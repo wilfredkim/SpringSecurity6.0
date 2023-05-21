@@ -10,6 +10,8 @@ import com.wilfred.security.springsecurity.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +31,7 @@ public class RoleServiceImpl implements RoleService {
         if (role == null) {
             role = new Role(roleRequest.getName(), roleRequest.getDescription());
             List<Privilege> privilegeList = new ArrayList<>();
-            if (roleRequest.getPrivilegeRequests()!=null) {
+            if (roleRequest.getPrivilegeRequests() != null) {
                 for (PrivilegeRequest privilegeRequest : roleRequest.getPrivilegeRequests()) {
                     privilegeList.add(privilegeService.save(privilegeRequest));
                 }
@@ -42,9 +44,15 @@ public class RoleServiceImpl implements RoleService {
                 }
 
             }
-
+            role.setDateCreated(LocalDateTime.now());
+            role.setDateUpdate(LocalDateTime.now());
             roleRepository.save(role);
         }
         return role;
+    }
+
+    @Override
+    public List<Role> getList() {
+        return roleRepository.findAll();
     }
 }

@@ -43,8 +43,8 @@ public class RegistrationServiceImpl implements RegistrationService {
         user.setDateCreated(LocalDateTime.now());
         user.setDateUpdate(LocalDateTime.now());
         user.setAccountActivated(false);
-        user.setAccountLocked(true);
         user.setAccountExpired(false);
+        user.setAccountLocked(true);
         Role staffRole = roleRepository.findByName("ROLE_STAFF");
         user.setRoles(List.of(staffRole));
         user = userRepository.save(user);

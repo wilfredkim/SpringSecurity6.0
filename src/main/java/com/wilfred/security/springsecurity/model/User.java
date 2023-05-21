@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Table(name = "_user")
-public class User  extends BaseEntity implements UserDetails {
+public class User extends BaseEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -51,12 +51,12 @@ public class User  extends BaseEntity implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return accountExpired;
+        return !accountExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return accountLocked;
+        return !accountLocked;
     }
 
     @Override
