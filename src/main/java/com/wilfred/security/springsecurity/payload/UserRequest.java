@@ -5,12 +5,12 @@ import com.wilfred.security.springsecurity.Util.ValidEmail;
 import com.wilfred.security.springsecurity.Util.ValidPassword;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @PasswordMatches
 public class UserRequest {
@@ -26,4 +26,6 @@ public class UserRequest {
     @NotEmpty
     @ValidPassword
     private String matchingPassword;
+
+
 }
