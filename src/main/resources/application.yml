@@ -41,7 +41,19 @@ spring:
 
 support:
   email: willypoze5@gmail.com
-
+management:
+  #endpoints:
+  #  web:
+  #    exposure:
+  #      exclude: *
+  endpoint:
+    health:
+      show-details: always
+      group:
+        health-group:
+          include:
+            - ping
+            - diskSpace
 
 
 

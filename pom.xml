@@ -6,6 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.0.5</version>
+       <!-- <version>3.1.1</version>-->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.wilfred.security</groupId>
@@ -17,7 +18,7 @@
         <java.version>17</java.version>
         <passay.version>1.6.3</passay.version>
         <guava.version>20.0</guava.version>
-        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <org.slf4j.version>2.0.7</org.slf4j.version>
 
 
 
@@ -90,11 +91,7 @@
             <artifactId>slf4j-api</artifactId>
             <version>${org.slf4j.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
@@ -104,11 +101,10 @@
             <artifactId>spring-restdocs-mockmvc</artifactId>
             <version>2.0.4.RELEASE</version>
         </dependency>
+
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>6.0.9</version>
-            <scope>test</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
 
